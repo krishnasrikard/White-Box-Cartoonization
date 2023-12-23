@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#SBATCH -J eval0								# Name of the job
+#SBATCH -o eval0.log							# Standard output file
+#SBATCH -p gpu-a100-small						# Queue (partition) name: ('normal' for CPU, 'gpu-a100' for GPU)
+#SBATCH -N 1									# No.of nodes requested
+#SBATCH --ntasks-per-node 1 					# No.of tasks per node
+#SBATCH -t 15:00:00								# Run time (hh:mm:ss)
+#SBATCH --mail-user=krishna.durbha@utexas.edu	# Email-ID for updates.
+#SBATCH --mail-type=all
+
+
+source /work/09076/dks2000/ls6/PythonEnvs/VirtualEnv2/bin/activate
+
+srun python3 ../execute.py --config ../configs/naruto_train.yaml

@@ -1,0 +1,28 @@
+dataset:
+  real_scenes_images_path: "/scratch/09076/dks2000/datasets/Image-Cartoonization/data/real_images/scenes/train"
+  cartoon_scenes_images_path: "/scratch/09076/dks2000/datasets/Image-Cartoonization/data/cartoon_images/shinkai"
+  # real_scenes_images_path: "/home/krishna/Image-Cartoonization/data/real_images/scenes/train"
+  # cartoon_scenes_images_path: "/home/krishna/Image-Cartoonization/data/cartoon_images/shinkai"
+  real_faces_images_path: "/scratch/09076/dks2000/datasets/Image-Cartoonization/data/real_images/faces/train"
+  cartoon_faces_images_path: "/scratch/09076/dks2000/datasets/Image-Cartoonization/data/cartoon_images/kyoto_face"
+  # real_faces_images_path: "/home/krishna/Image-Cartoonization/data/real_images/faces/train"
+  # cartoon_faces_images_path: "/home/krishna/Image-Cartoonization/data/cartoon_images/kyoto_face"
+  sample_steps: [5,1]
+  batch_size: 64
+  num_workers: 32
+stage: "pretrain"
+load_ckpt_path:
+pretrain_ckpt_path:
+checkpoint:
+  dirpath: "/work/09076/dks2000/ls6/Image-Cartoonization/checkpoints"
+  # dirpath: "checkpoints"
+  filename: "best_pretrain_model"
+  save_top_k: -1
+  mode: "min"
+trainer:
+  num_nodes: 1
+  gpus: 1
+  max_epochs: 2
+  val_check_interval: 200
+  limit_val_batches: 1
+  log_every_n_steps: 10
